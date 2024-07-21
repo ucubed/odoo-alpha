@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-inherit="web.WebClient" t-inherit-mode="extension" owl="1">
+        <xpath expr="//ActionContainer" position="replace"/>
+        <xpath expr="//MainComponentsContainer" position="replace"/>
+        <xpath expr="//t" position="replace">
+            <div class="wrapper-container-bits">
+                <div class="nav-wrapper-bits toggle-show"> 
+                    <header class="o_navbar" t-ref="root"> 
+                        <div class="o_company_logo p-3">
+                            <div class="d-flex justify-content-between w-100 align-items-center">
+                                <t t-if="currentCompany">
+                                    <img class="img img-fluid company_logo" t-attf-src="/web/image?model=res.company&amp;field=logo&amp;id={{currentCompany.id}}"/>
+                                    <img class="img img-fluid company_logo_icon d-none" t-attf-src="/web/image?model=res.company&amp;field=logo_icon&amp;id={{currentCompany.id}}"/>
+                                </t>
+                                <i class="fa fa-bars fa-2x" t-on-click="toggleSidebar"/>
+                            </div>
+                        </div>
+                        <!-- Apps Menu -->
+                        <t t-call="web.NavBar.AppsMenu">
+                            <!-- <t t-set="apps" t-value="menuService.getApps()" /> -->
+                        </t> 
+                        <div class="btm-user-menu d-block">
+                            <SidebarBottom/>
+                        </div> 
+                    </header>	
+                   
+                </div>
+                <div class="content-wrapper-bits"> 
+                    
+                    <t t-if="!state.fullscreen">
+                        <NavBar/>
+                    </t> 
+                    <ActionContainer/>
+                    <MainComponentsContainer/>
+                </div>
+            </div> 
+        </xpath> 
+    </t>
+
+</templates>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="login_layout_bits" inherit_id="web.login_layout" name="login layout">
+        <!-- <xpath expr="//div[@class='container py-5']" position="attributes">
+            <attribute name="class">container py-5 login-view-bits</attribute>
+        </xpath> -->
+        <xpath expr="//div[@class='container py-5']" position="replace">
+            <div class="container py-5 login-view-bits">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-4 col-lg-4">
+                        <div t-attf-class="card border-0 mx-auto bg-100 {{login_card_classes}} o_database_list">
+                            <div class="card-body">
+                                <div t-attf-class="text-center pb-3 border-bottom {{'mb-3' if form_small else 'mb-4'}}">
+                                    <img t-attf-src="/web/binary/company_logo{{ '?dbname='+db if db else '' }}" alt="Logo" style="max-height:120px; max-width: 100%; width:auto"/>
+                                </div>
+                                <t t-out="0"/>
+                                <div class="text-center small mt-4 pt-3 border-top" t-if="not disable_footer">
+                                    <t t-if="not disable_database_manager">
+                                        <a class="border-end pe-2 me-1" href="/web/database/manager">Manage Databases</a>
+                                    </t>
+                                    <a href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth" target="_blank">Powered by <span>Odoo</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

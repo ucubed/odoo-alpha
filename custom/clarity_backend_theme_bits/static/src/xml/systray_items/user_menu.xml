@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates> 
+    <t t-inherit="web.UserMenu" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-set-slot='toggler']" position="replace">
+            <t t-set-slot="toggler">
+                <img class="o_avatar o_user_avatar rounded" t-att-src="source" alt="User"/> 
+            </t>
+        </xpath> 
+    </t> 
+    <t t-name="SidebarBottom" >
+        <div class='sytray-container-bits'> 
+            <Dropdown class="'o_user_menu pe-0'" togglerClass="'py-1 py-lg-0'">
+                <t t-set-slot="toggler">
+                    <div class="user-avtar-bits d-block py-3"> 
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <img class="o_avatar o_user_avatar rounded" t-att-src="source" t-att-alt="user.name"/>
+                            </div>   
+                            <span class="oe_topbar_name ms-2 lh-1 text-truncate mb-0 py-2 text-white d-block" >
+                                <t t-esc="user.name"/> 
+                            </span>
+                        </div>
+                        <div class="oe_topbar_name text-start smaller lh-1 text-truncate w-100"  t-att-class="{'d-lg-inline-block' : env.debug}" > 
+                            <mark class="d-block font-monospace text-truncate">
+                                <i class="fa fa-database oi-small me-1"/><t t-esc="user.db.name"/>
+                            </mark>
+                        </div>
+                        <div class="powered-by">
+                            Powered By<a href="https://www.terabits.xyz/contact-us" class="btn btn-link btn-sm">Terabits Technolab</a>
+                        </div>
+                    </div>
+                </t>
+                <t t-foreach="getElements()" t-as="element" t-key="element_index">
+                    <t t-if="!element.hide">
+                        <DropdownItem
+                            t-if="element.type == 'item' || element.type == 'switch'"
+                            href="element.href"
+                            dataset="{ menu: element.id }"
+                            onSelected="element.callback"
+                        >
+                            <CheckBox
+                                t-if="element.type == 'switch'"
+                                value="element.isChecked"
+                                className="'form-switch d-flex flex-row-reverse justify-content-between p-0 w-100'"
+                                onChange="element.callback"
+                            >
+                                <t t-out="element.description"/>
+                            </CheckBox>
+                            <t t-else="" t-out="element.description"/>
+                        </DropdownItem>
+                        <div t-if="element.type == 'separator'" role="separator" class="dropdown-divider"/>
+                    </t>
+                </t> 
+            </Dropdown> 
+        </div>
+    </t>
+    
+    <t t-inherit="web.SwitchCompanyMenu" t-inherit-mode="extension">
+        <xpath expr="//t[@t-set-slot='toggler']" position="replace">
+            <t t-set-slot="toggler">
+                <i class="fa fa-building" title="Switch Company"/>
+            </t>
+        </xpath>
+    </t>
+</templates>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_users_form" model="ir.ui.view">
+        <field name="name">res.users.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='access_rights']" position="inside">
+                <!-- <separator string="Don't know how to set correct access rights for multiple users?" class=""/> -->
+                <div class="o_horizontal_separator mt-4 mb-3 text-uppercase fw-bolder bg-300 py-4 rounded px-2">Don't know how to set correct access rights for multiple users?</div>
+                <div>
+                    <div class="d-block">
+                        <h5 class="mt-2">Easily set with <a href="https://apps.odoo.com/apps/modules/17.0/simplify_access_management/" title="terabits">Simplify Access Management</a> app.</h5>
+                        <h5 class="mt-2">
+                            Live demo available
+                            <a href="https://www.terabits.xyz/request_demo?source=clarity_backend_theme&amp;version=17&amp;app=simplify_access_management" title="terabits">Access Here.</a>
+                        </h5>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
