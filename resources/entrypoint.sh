@@ -60,6 +60,7 @@ unaccent = ${UNACCENT}
 without_demo = ${WITHOUT_DEMO}
 workers = ${WORKERS}
 running_env = ${RUNNING_ENV}" > $ODOO_RC
+xmlrpc_interface = 127.0.0.1
 fi
 
 if [ -z "$EXTRA_ADDONS_PATHS" ]; then
