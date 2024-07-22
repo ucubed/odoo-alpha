@@ -5,7 +5,7 @@ LICENSE
 README.md
 Changelog.md
 Makefile
-custom/*
+# custom/*
 src/*
 .devcontainer/*
 .yaml
